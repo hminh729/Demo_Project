@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     public String handeHello() {
-        return "i am minh";
+        return "i am userservice";
     }
 }

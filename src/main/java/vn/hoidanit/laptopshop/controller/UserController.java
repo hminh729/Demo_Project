@@ -22,10 +22,15 @@ public class UserController {
     @RequestMapping("/")
 
     public String getHomePage(Model model) {
-        String test = this.userService.handeHello();
-        model.addAttribute("eric", test);
-        model.addAttribute("hoidanit", "from controler with model");
-        return "hello";
+
+        return "create";
+    }
+
+    @RequestMapping("/admin/user")
+
+    public String getPage(Model model) {
+
+        return "create";
     }
 }
 
