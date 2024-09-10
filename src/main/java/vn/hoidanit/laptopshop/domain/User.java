@@ -2,7 +2,14 @@ package vn.hoidanit.laptopshop.domain;
 
 public class User {
     private long id;
-    private String email, password, fullName, address, phone;
+    private String email;
+    private String password;
+    private String fullName;
+    private String address;
+    private String phone;
+
+    public User() {
+    }
 
     public long getId() {
         return id;
