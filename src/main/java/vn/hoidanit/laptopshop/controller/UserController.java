@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.service.UserService;
 
@@ -21,17 +22,18 @@ public class UserController {
     @RequestMapping("/")
 
     public String getHomePage(Model model) {
-
+        List<User> arrUsers = this.userService.getAllUserByEmail("1@gmail.com");
+        System.out.println(arrUsers);
         return "hello";
     }
 
-    @RequestMapping("/admin/user")
+    @RequestMapping("/admin/user/create")
     public String getPage(Model model) {
         model.addAttribute("newUser", new User());
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user/create1", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/user", method = RequestMethod.POST)
     public String CreategetPage(Model model, @ModelAttribute("newUser") User hoidanit) {
 
         this.userService.handleSaveUser(hoidanit);
