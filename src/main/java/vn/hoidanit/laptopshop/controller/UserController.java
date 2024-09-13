@@ -19,25 +19,35 @@ public class UserController {
         this.userService = userService;
     }
 
+    @RequestMapping("/admin/user")
+
+    public String getAdminUserPage(Model model) {
+
+        List<User> users = this.userService.getAllUser();
+        model.addAttribute("users1", users);
+
+        return "admin/user/table_user";
+    }
+
     @RequestMapping("/")
 
     public String getHomePage(Model model) {
-        List<User> arrUsers = this.userService.getAllUserByEmail("1@gmail.com");
-        System.out.println(arrUsers);
-        return "hello";
+
+        return "homePage";
     }
 
     @RequestMapping("/admin/user/create")
-    public String getPage(Model model) {
+
+    public String getUserCreatePage(Model model) {
+        List<User> users = this.userService.getAllUser();
         model.addAttribute("newUser", new User());
+
         return "admin/user/create";
     }
 
-    @RequestMapping(value = "/admin/user", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
     public String CreategetPage(Model model, @ModelAttribute("newUser") User hoidanit) {
-
         this.userService.handleSaveUser(hoidanit);
-
-        return "hello";
+        return "redirect:/admin/user";
     }
 }
