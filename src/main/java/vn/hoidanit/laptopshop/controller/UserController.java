@@ -3,6 +3,7 @@ package vn.hoidanit.laptopshop.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,6 +28,13 @@ public class UserController {
         model.addAttribute("users1", users);
 
         return "admin/user/table_user";
+    }
+
+    @RequestMapping("/admin/user/{id}")
+
+    public String getDetailUserPage(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        return "admin/user/show";
     }
 
     @RequestMapping("/")

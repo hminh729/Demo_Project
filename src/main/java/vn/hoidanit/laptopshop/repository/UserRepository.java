@@ -12,4 +12,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByPassword(String password);
 
     User save(User hoidanit);
+
 }
