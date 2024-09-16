@@ -27,8 +27,12 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
-    public void handleDetailUser(User user) {
+    public User handleDetailUserByID(long id) {
+        return this.userRepository.findById(id);
+    }
 
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
     }
 
 }

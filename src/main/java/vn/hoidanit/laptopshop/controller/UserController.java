@@ -23,7 +23,6 @@ public class UserController {
     @RequestMapping("/admin/user")
 
     public String getAdminUserPage(Model model) {
-
         List<User> users = this.userService.getAllUser();
         model.addAttribute("users1", users);
 
@@ -33,8 +32,24 @@ public class UserController {
     @RequestMapping("/admin/user/{id}")
 
     public String getDetailUserPage(Model model, @PathVariable long id) {
-        model.addAttribute("id", id);
+        User userById = this.userService.handleDetailUserByID(id);
+        model.addAttribute("userById", userById);
         return "admin/user/show";
+    }
+
+    @RequestMapping("/admin/user/update/{id}")
+
+    public String getUpdateUserPage(Model model, @PathVariable long id) {
+        User currentUser = this.userService.getUserById(id);
+        model.addAttribute("newUser", currentUser);
+        return "admin/user/update";
+    }
+
+    @RequestMapping(value = "/admin/user/update", method = RequestMethod.POST)
+    public String getUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit) {
+        User currenUser = this.userService.getUserById(hoidanit.getId());
+        this.userService.handleSaveUser(hoidanit);
+        return "redirect:/admin/user";
     }
 
     @RequestMapping("/")
@@ -47,7 +62,6 @@ public class UserController {
     @RequestMapping("/admin/user/create")
 
     public String getUserCreatePage(Model model) {
-        List<User> users = this.userService.getAllUser();
         model.addAttribute("newUser", new User());
 
         return "admin/user/create";

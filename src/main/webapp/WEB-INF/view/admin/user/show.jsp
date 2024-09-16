@@ -48,12 +48,12 @@
                                 User Information
                             </div>
                             <ul class="list-group list-group-flush">
-                            <li class="list-group-item">ID: -${id}</li>
-                            <li class="list-group-item">Full Name: -</li>
-                            <li class="list-group-item">Email: -</li>
-                            <li class="list-group-item">Address: -</li>
-                            <li class="list-group-item">PassWord: -</li>
-                            <li class="list-group-item">Phone: -</li>
+                            <li class="list-group-item">ID: -${userById.id}</li>
+                            <li class="list-group-item">Full Name: -${userById.fullName}</li>
+                            <li class="list-group-item">Email: -${userById.email}</li>
+                            <li class="list-group-item">Address: -${userById.address}</li>
+                            <li class="list-group-item">PassWord: -${userById.password}</li>
+                            <li class="list-group-item">Phone: -${userById.phone}</li>
 
                             </ul>
                         </div>

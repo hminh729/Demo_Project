@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table User</title>
+    <title>Table User {id}</title>
         <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet">
@@ -55,7 +55,7 @@
                                 <td>${user.fullName}</td> 
                                 <td>
                                   <a type="button" class="btn btn-success" href="/admin/user/${user.id}">View</a>
-                                  <button type="button" class="btn btn-warning mx-2">Update</button>
+                                  <a type="button" class="btn btn-warning mx-2" href="/admin/user/update/${user.id}">Update</a>
                                   <button type="button" class="btn btn-danger">Delete</button>
                                 </td>
                               </tr>
