@@ -15,5 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User save(User hoidanit);
 
-    // User saveById(User hoidanit);
+    void deleteById(long id);
+
 }

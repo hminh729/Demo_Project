@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table User {id}</title>
+    <title>Table User</title>
         <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
     rel="stylesheet">
@@ -56,7 +56,7 @@
                                 <td>
                                   <a type="button" class="btn btn-success" href="/admin/user/${user.id}">View</a>
                                   <a type="button" class="btn btn-warning mx-2" href="/admin/user/update/${user.id}">Update</a>
-                                  <button type="button" class="btn btn-danger">Delete</button>
+                                  <a type="button" class="btn btn-danger" href="/admin/user/delete/${user.id}" >Delete</a>
                                 </td>
                               </tr>
                         </c:forEach>

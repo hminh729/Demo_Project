@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.service.UserService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class UserController {
@@ -45,10 +49,15 @@ public class UserController {
         return "admin/user/update";
     }
 
-    @RequestMapping(value = "/admin/user/update", method = RequestMethod.POST)
-    public String getUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit) {
-        User currenUser = this.userService.getUserById(hoidanit.getId());
-        this.userService.handleSaveUser(hoidanit);
+    @RequestMapping(value = "/admin/user/update/{id}", method = RequestMethod.POST)
+    public String getUpdateUser(Model model, @ModelAttribute("newUser") User hoidanit, @PathVariable long id) {
+        User currentUser = this.userService.getUserById(hoidanit.getId());
+        if (currentUser != null) {
+            currentUser.setAddress(hoidanit.getAddress());
+            currentUser.setFullName(hoidanit.getFullName());
+            currentUser.setPhone(hoidanit.getPhone());
+            this.userService.handleSaveUser(currentUser);
+        }
         return "redirect:/admin/user";
     }
 
@@ -72,4 +81,17 @@ public class UserController {
         this.userService.handleSaveUser(hoidanit);
         return "redirect:/admin/user";
     }
+
+    @GetMapping("/admin/user/delete/{id}")
+    public String getMethodName(Model model, @PathVariable long id) {
+        model.addAttribute("user", new User());
+        return "admin/user/delete";
+    }
+
+    @PostMapping("/admin/user/delete")
+    public String deleteAUser(Model model, @ModelAttribute("user") User hoidanit) {
+        this.userService.deleteUserById(hoidanit.getId());
+        return "redirect:/admin/user";
+    }
+
 }
